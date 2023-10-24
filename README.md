@@ -4,16 +4,6 @@ Organize your files within Visual Studio Code into contexts, giving you a more o
 
 ![context-organizer](https://github.com/devaniljr/context-organizer/assets/7834279/ef0ac99b-d361-4aa3-839c-8cf0b8eeaaf8)
 
-## Features
-
-- **Add files to specific contexts**: Easily categorize your files within different contexts to declutter your project structure and maintain a more organized development environment.
-  
-- **Create New Context**: Create a new context right from the Visual Studio Code interface.
-  
-- **Remove files from contexts**: Have the flexibility to remove files from specific contexts.
-
-- **Visual organization**: View your organized files in a separate "Contexts" pane in the activity bar.
-
 ## How to Use
 
 1. **Add to context**: Right-click on any file in the explorer and select `Add to context...` to add it to a specific context.
