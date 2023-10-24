@@ -41,8 +41,6 @@ You can configure the extension settings by changing the `.vscode/contexts.json`
 
 The file contains an array of contexts. Each context has a `name` and an array of `files` that are automatically set with the UI.
 
-You can also configure the extension settings by changing the `.vscode/settings.json` file in your workspace root.
-
 ### `showFolders`
 
 You can choose to show or hide the folders in the "Contexts" pane by setting the `showFolders` property to `true` or `false`.
