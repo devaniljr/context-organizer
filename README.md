@@ -1,7 +1,5 @@
 # Context Organizer for VS Code
 
-![Context Organizer Logo](./media/organization.svg)
-
 Organize your files within Visual Studio Code into contexts, giving you a more organized view of your project structure.
 
 ## Features
@@ -60,10 +58,3 @@ Initial release of Context Organizer.
 ## Feedback
 
 If you have suggestions or issues, please [open an issue](https://github.com/devaniljr/context-organizer).
-
----
-
-![Context Organizer Screenshot](./media/screenshot.png)
-
-*Organize your files with ease using Context Organizer for Visual Studio Code.*
-
