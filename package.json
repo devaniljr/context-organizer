@@ -3,6 +3,12 @@
   "displayName": "Context Organizer",
   "description": "Organize your files into contexts",
   "version": "0.0.1",
+  "publisher": "Devanil",
+  "icon": "media/context-organizer.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devaniljr/context-organizer"
+  },
   "engines": {
     "vscode": "^1.83.0"
   },
