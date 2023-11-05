@@ -30,11 +30,16 @@
         "title": "Remove from context"
       }
     ],
-    "menus": {
+    "menus": {      
       "explorer/context": [
         {
           "command": "context-organizer.addToFileSection",
           "when": "resourceLangId != undefined"
+        }
+      ],
+      "editor/title/context": [
+        {
+          "command": "context-organizer.addToFileSection"          
         }
       ],
       "view/title": [
