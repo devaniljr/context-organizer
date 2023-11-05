@@ -3,6 +3,7 @@ import * as fs from 'fs';
 import * as vscode from 'vscode';
 import { SimpleDataProvider, File } from './dataProvider';
 import { showSectionPicker, addFileToConfig, createDefaultContextsFile } from './comands'
+import { SingletonOutputChannel } from './loggerChannel';
 
 
 export function activate(context: vscode.ExtensionContext) {
@@ -66,6 +67,7 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	});
 	context.subscriptions.push(removeFileFromContext);
+	SingletonOutputChannel.getInstance();
 }
 
 export function deactivate() { }
