@@ -2,7 +2,7 @@
   "name": "context-organizer",
   "displayName": "Context Organizer",
   "description": "Organize your files into contexts",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "Devanil",
   "icon": "media/context-organizer.png",
   "repository": {
