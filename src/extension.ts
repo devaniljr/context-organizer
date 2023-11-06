@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import * as vscode from 'vscode';
-import { SimpleDataProvider, File } from './dataProvider';
+import { SimpleDataProvider, File, Section } from './dataProvider';
 import { showSectionPicker, addFileToConfig, createDefaultContextsFile } from './comands'
 import { SingletonOutputChannel } from './loggerChannel';
 
@@ -68,6 +68,20 @@ export function activate(context: vscode.ExtensionContext) {
 	});
 	context.subscriptions.push(removeFileFromContext);
 	SingletonOutputChannel.getInstance();
+
+	// Button to remove a context as a whole
+	let removeContextCommand = vscode.commands.registerCommand('context-organizer.removeContext', async (section: Section) => {
+		const configPath = path.join(workspaceRoot, '.vscode', 'contexts.json');
+		const config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
+
+		if (config.contexts && config.contexts[section.label as string]) {
+			delete config.contexts[section.label as string];
+			fs.writeFileSync(configPath, JSON.stringify(config, null, 4));
+			dataProvider.refresh();
+		}
+	});
+
+	context.subscriptions.push(removeContextCommand);
 }
 
 export function deactivate() { }

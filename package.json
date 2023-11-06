@@ -28,6 +28,10 @@
       {
         "command": "context-organizer.removeFromContext",
         "title": "Remove from context"
+      },
+      {
+        "command": "context-organizer.removeContext",
+        "title": "Remove Context"
       }
     ],
     "menus": {      
@@ -53,6 +57,10 @@
         {
           "command": "context-organizer.removeFromContext",
           "when": "view == contextOrganizerView && viewItem == file"
+        },
+        {
+          "command": "context-organizer.removeContext",
+          "when": "view == contextOrganizerView && viewItem == section"
         }
       ]
     },

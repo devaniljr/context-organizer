@@ -115,6 +115,7 @@ export class Section extends Container {
 			dark: path.join(__filename, '..', '..', 'resources', 'dark', 'contextIcon.svg')
 		};
 		this.children = children;
+		this.contextValue = 'section';
 	}
 }
 
