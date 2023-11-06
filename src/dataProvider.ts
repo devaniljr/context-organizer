@@ -1,20 +1,15 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import * as vscode from 'vscode';
-
+import {SingletonOutputChannel} from './loggerChannel';
 export class SimpleDataProvider implements vscode.TreeDataProvider<vscode.TreeItem> {
 	private _items: vscode.TreeItem[] = [];
 
 	constructor(private workspaceRoot: string) {
 		this.loadConfig();
 	}
-
-	private loadConfig() {
-		this._items = [];
-		const configPath = path.join(this.workspaceRoot, '.vscode', 'contexts.json');
-
-		if (fs.existsSync(configPath)) {
-			const config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
+	private handleLoadConfig(configPath:string){
+		const config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
 			const showFolders = config.configs.showFolders;
 
 			for (const sectionName in config.contexts) {
@@ -25,6 +20,25 @@ export class SimpleDataProvider implements vscode.TreeDataProvider<vscode.TreeIt
 					}
 				}
 				this._items.push(new Section(sectionName, sectionItems));
+			}
+	}
+	private loadConfig() {
+		this._items = [];
+		const configPath = path.join(this.workspaceRoot, '.vscode', 'contexts.json');
+		
+		if (fs.existsSync(configPath)) {
+			try{
+				this.handleLoadConfig(configPath);
+			}catch(error){
+				let message = `Error while reading file ${configPath}, check your file`;
+				vscode.window.showErrorMessage(message); //not detailed error
+				if (error instanceof SyntaxError){ 
+					message = `Error while reading file configPath, details : ${error.message}`;
+				}				 
+				SingletonOutputChannel.appendLine(message);
+
+				
+				
 			}
 		} else {
 			vscode.window.showWarningMessage('File contexts.json in .vscode folder not found.');
