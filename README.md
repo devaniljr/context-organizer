@@ -45,6 +45,15 @@ You can choose to show or hide the folders in the "Contexts" pane by setting the
 
 Initial release of Context Organizer.
 
+### 0.0.2
+
+New icon and README update.
+
+### 0.0.3
+
+- Preventing from adding files that are already in a context (by @DanNYSPD).
+- New button to remove a context as a whole.
+
 ## Feedback
 
 If you have suggestions or issues, please [open an issue](https://github.com/devaniljr/context-organizer).

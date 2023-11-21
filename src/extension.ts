@@ -77,6 +77,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(addFileToStageFromContext);
 	SingletonOutputChannel.getInstance();
 
+
 	// Button to copy relative path (if possible): 
 	let copyContextFilePath = vscode.commands.registerCommand('context-organizer.copyRelativePathToClipboard', async (file: File) => {
 		 
@@ -107,6 +108,21 @@ export function activate(context: vscode.ExtensionContext) {
 	});
 
 	context.subscriptions.push(renameContextCommand);
+	// Button to remove a context as a whole
+	let removeContextCommand = vscode.commands.registerCommand('context-organizer.removeContext', async (section: Section) => {
+		const configPath = path.join(workspaceRoot, '.vscode', 'contexts.json');
+		const config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
+
+		if (config.contexts && config.contexts[section.label as string]) {
+			delete config.contexts[section.label as string];
+			fs.writeFileSync(configPath, JSON.stringify(config, null, 4));
+			dataProvider.refresh();
+		}
+	});
+
+	context.subscriptions.push(removeContextCommand);
+
+	context.subscriptions.push(renameContextCommand);
 	// Button to copy all files path context
 	let copyContextPathsCommand = vscode.commands.registerCommand('context-organizer.copyContextPaths', async (section: Section) => {		
 		const configPath = path.join(workspaceRoot, '.vscode', 'contexts.json');
@@ -121,6 +137,7 @@ export function activate(context: vscode.ExtensionContext) {
 	});
 
 	context.subscriptions.push(copyContextPathsCommand);
+	
 }
 
 export function deactivate() { }

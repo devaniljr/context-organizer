@@ -2,7 +2,7 @@
   "name": "context-organizer",
   "displayName": "Context Organizer",
   "description": "Organize your files into contexts",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "publisher": "Devanil",
   "icon": "media/context-organizer.png",
   "repository": {
@@ -44,6 +44,9 @@
       {
         "command": "context-organizer.copyRelativePathToClipboard",
         "title": "Copy relative path to clipboard"
+      },{
+        "command": "context-organizer.removeContext",
+        "title": "Remove Context"
       }
     ],
     "menus": { 
@@ -85,6 +88,10 @@
         {
           "command": "context-organizer.addToStage",
           "when": "view == contextOrganizerView && viewItem == file"
+        },
+        {
+          "command": "context-organizer.removeContext",
+          "when": "view == contextOrganizerView && viewItem == section"
         }
       ]
     },
