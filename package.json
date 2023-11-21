@@ -28,9 +28,25 @@
       {
         "command": "context-organizer.removeFromContext",
         "title": "Remove from context"
+      },
+      {
+        "command": "context-organizer.renameContext",
+        "title": "Rename Context"
+      },
+      {
+        "command": "context-organizer.copyContextPaths",
+        "title": "Copy Context Paths to clipboard"
+      },
+      {
+        "command": "context-organizer.addToStage",
+        "title": "Add to stage"
+      },
+      {
+        "command": "context-organizer.copyRelativePathToClipboard",
+        "title": "Copy relative path to clipboard"
       }
     ],
-    "menus": {      
+    "menus": { 
       "explorer/context": [
         {
           "command": "context-organizer.addToFileSection",
@@ -53,6 +69,22 @@
         {
           "command": "context-organizer.removeFromContext",
           "when": "view == contextOrganizerView && viewItem == file"
+        },
+        {
+          "command": "context-organizer.renameContext",
+          "when": "view == contextOrganizerView && viewItem == section"
+        },
+        {
+          "command": "context-organizer.copyContextPaths",
+          "when": "view == contextOrganizerView && viewItem == section"
+        },
+        {
+          "command": "context-organizer.copyRelativePathToClipboard",
+          "when": "view == contextOrganizerView && viewItem == file"
+        },
+        {
+          "command": "context-organizer.addToStage",
+          "when": "view == contextOrganizerView && viewItem == file"
         }
       ]
     },
@@ -66,6 +98,7 @@
       ]
     },
     "views": {
+      
       "context-organizer": [
         {
           "id": "contextOrganizerView",
