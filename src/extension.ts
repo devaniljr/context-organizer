@@ -113,7 +113,17 @@ export function activate(context: vscode.ExtensionContext) {
 		const configPath = path.join(workspaceRoot, '.vscode', 'contexts.json');
 		const config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
 
+		
 		if (config.contexts && config.contexts[section.label as string]) {
+			
+			//only if context has files, ask for confirmation
+			let files:string[]= config.contexts[section.label as string];
+			if (files.length>0){
+				let answer=await vscode.window.showInformationMessage(`Are you sure you want to delete ${section.label} context, this action is irreversible?`, "Yes", "No");
+				if (answer==='No'){
+					return;
+				}
+			}
 			delete config.contexts[section.label as string];
 			fs.writeFileSync(configPath, JSON.stringify(config, null, 4));
 			dataProvider.refresh();
