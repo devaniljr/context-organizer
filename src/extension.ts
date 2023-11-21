@@ -106,8 +106,8 @@ export function activate(context: vscode.ExtensionContext) {
 			dataProvider.refresh();
 		}
 	});
-
 	context.subscriptions.push(renameContextCommand);
+
 	// Button to remove a context as a whole
 	let removeContextCommand = vscode.commands.registerCommand('context-organizer.removeContext', async (section: Section) => {
 		const configPath = path.join(workspaceRoot, '.vscode', 'contexts.json');
@@ -119,10 +119,8 @@ export function activate(context: vscode.ExtensionContext) {
 			dataProvider.refresh();
 		}
 	});
-
 	context.subscriptions.push(removeContextCommand);
 
-	context.subscriptions.push(renameContextCommand);
 	// Button to copy all files path context
 	let copyContextPathsCommand = vscode.commands.registerCommand('context-organizer.copyContextPaths', async (section: Section) => {		
 		const configPath = path.join(workspaceRoot, '.vscode', 'contexts.json');
