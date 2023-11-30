@@ -4,6 +4,7 @@ import * as vscode from 'vscode';
 import { SimpleDataProvider, File, Section } from './dataProvider';
 import { showSectionPicker, addFileToConfig, createDefaultContextsFile } from './comands'
 import { SingletonOutputChannel } from './loggerChannel';
+import * as os from 'os';
 
 
 export function activate(context: vscode.ExtensionContext) {
@@ -67,21 +68,84 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	});
 	context.subscriptions.push(removeFileFromContext);
+	// Button to add to stage stack (git)
+	let addFileToStageFromContext = vscode.commands.registerCommand('context-organizer.addToStage', async (file: File) => {
+
+		let success = await vscode.commands.executeCommand('git.stage', file.filePath);
+
+	});
+	context.subscriptions.push(addFileToStageFromContext);
 	SingletonOutputChannel.getInstance();
+
+
+	// Button to copy relative path (if possible): 
+	let copyContextFilePath = vscode.commands.registerCommand('context-organizer.copyRelativePathToClipboard', async (file: File) => {
+		 
+		let relativeFilePath=vscode.workspace.workspaceFolders ? path.relative(vscode.workspace.workspaceFolders[0].uri.fsPath,file.filePath):file.filePath;
+		await vscode.env.clipboard.writeText(relativeFilePath);
+		vscode.window.showInformationMessage(`Path: ${relativeFilePath} copied to clipboard!`);
+
+
+	});
+	context.subscriptions.push(copyContextFilePath);
+
+	// Button to rename a context
+	let renameContextCommand = vscode.commands.registerCommand('context-organizer.renameContext', async (section: Section) => {
+		const sectionName = await vscode.window.showInputBox({ prompt: `New name for your context :${section.label}` });
+		if (!sectionName) {
+			return;
+		}
+		const configPath = path.join(workspaceRoot, '.vscode', 'contexts.json');
+		const config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
+
+		if (config.contexts && config.contexts[section.label as string]) {
+			config.contexts[sectionName] = [];
+			config.contexts[sectionName]= config.contexts[section.label as string];
+			delete config.contexts[section.label as string];
+			fs.writeFileSync(configPath, JSON.stringify(config, null, 4));
+			dataProvider.refresh();
+		}
+	});
+	context.subscriptions.push(renameContextCommand);
 
 	// Button to remove a context as a whole
 	let removeContextCommand = vscode.commands.registerCommand('context-organizer.removeContext', async (section: Section) => {
 		const configPath = path.join(workspaceRoot, '.vscode', 'contexts.json');
 		const config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
 
+		
 		if (config.contexts && config.contexts[section.label as string]) {
+			
+			//only if context has files, ask for confirmation
+			let files:string[]= config.contexts[section.label as string];
+			if (files.length>0){
+				let answer=await vscode.window.showInformationMessage(`Are you sure you want to delete ${section.label} context, this action is irreversible?`, "Yes", "No");
+				if (answer==='No'){
+					return;
+				}
+			}
 			delete config.contexts[section.label as string];
 			fs.writeFileSync(configPath, JSON.stringify(config, null, 4));
 			dataProvider.refresh();
 		}
 	});
-
 	context.subscriptions.push(removeContextCommand);
+
+	// Button to copy all files path context
+	let copyContextPathsCommand = vscode.commands.registerCommand('context-organizer.copyContextPaths', async (section: Section) => {		
+		const configPath = path.join(workspaceRoot, '.vscode', 'contexts.json');
+		const config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
+
+		if (config.contexts && config.contexts[section.label as string]) {
+			
+			let files:string[]= config.contexts[section.label as string];
+			await vscode.env.clipboard.writeText(files.join(os.EOL));
+			vscode.window.showInformationMessage("Paths copied to clipboard!");
+		}
+	});
+
+	context.subscriptions.push(copyContextPathsCommand);
+	
 }
 
 export function deactivate() { }
