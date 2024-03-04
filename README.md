@@ -54,6 +54,13 @@ New icon and README update.
 - Preventing from adding files that are already in a context (by @DanNYSPD).
 - New button to remove a context as a whole.
 
+### 0.0.4 (by @DanNYSPD)
+
+- Copy file path into clipboard
+- Copy all file paths from a context into clipboard (based on EOL of the OS)
+- Add file to stage stack (git) directly
+- Rename contextS
+
 ## Feedback
 
 If you have suggestions or issues, please [open an issue](https://github.com/devaniljr/context-organizer).
