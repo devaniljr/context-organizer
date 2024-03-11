@@ -1,8 +1,8 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import * as vscode from 'vscode';
-import {SingletonOutputChannel} from './loggerChannel';
-export class SimpleDataProvider implements vscode.TreeDataProvider<vscode.TreeItem> {
+
+export class TreeDataProvider implements vscode.TreeDataProvider<vscode.TreeItem> {
 	private _items: vscode.TreeItem[] = [];
 
 	constructor(private workspaceRoot: string) {
@@ -34,14 +34,14 @@ export class SimpleDataProvider implements vscode.TreeDataProvider<vscode.TreeIt
 				vscode.window.showErrorMessage(message); //not detailed error
 				if (error instanceof SyntaxError){ 
 					message = `Error while reading file configPath, details : ${error.message}`;
-				}				 
-				SingletonOutputChannel.appendLine(message);
+				}
+				vscode.window.showErrorMessage(message);
 
 				
 				
 			}
 		} else {
-			vscode.window.showWarningMessage('File contexts.json in .vscode folder not found.');
+			vscode.window.showWarningMessage('File contexts.json was not found in the .vscode folder, so it has been created for you.');
 		}
 	}
 
