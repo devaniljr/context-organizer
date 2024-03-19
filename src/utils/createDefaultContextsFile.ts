@@ -8,7 +8,8 @@ export function createDefaultContextsFile(workspaceRoot: string) {
 		const defaultContent = {
 			"contexts": {},
 			"configs": {
-				"showFolders": false
+				"showFolders": false,
+				"orderAlphabetically": true
 			}
 		};
 
