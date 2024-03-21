@@ -109,7 +109,7 @@ abstract class Container extends vscode.TreeItem {
 
 export class Section extends Container {
 	constructor(label: string, children: vscode.TreeItem[] = []) {
-		super(label, children.length > 0 ? vscode.TreeItemCollapsibleState.Expanded : vscode.TreeItemCollapsibleState.Collapsed);
+		super(label, vscode.TreeItemCollapsibleState.Collapsed);
 		this.iconPath = {
 			light: path.join(__filename, '..', '..', 'resources', 'light', 'contextIcon.svg'),
 			dark: path.join(__filename, '..', '..', 'resources', 'dark', 'contextIcon.svg')
