@@ -44,9 +44,14 @@
       {
         "command": "context-organizer.copyRelativePathToClipboard",
         "title": "Copy relative path to clipboard"
-      },{
+      },
+      {
         "command": "context-organizer.removeContext",
         "title": "Remove Context"
+      },
+      {
+        "command": "context-organizer.copyContextContents",
+        "title": "Copy Context Contents to Clipboard"
       }
     ],
     "menus": { 
@@ -91,6 +96,10 @@
         },
         {
           "command": "context-organizer.removeContext",
+          "when": "view == contextOrganizerView && viewItem == section"
+        },
+        {
+          "command": "context-organizer.copyContextContents",
           "when": "view == contextOrganizerView && viewItem == section"
         }
       ]

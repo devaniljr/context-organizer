@@ -9,6 +9,7 @@ import { copyContextFilePathCommand } from './copyContextFilePathCommand';
 import { renameContextCommand } from './renameContextCommand';
 import { removeContextCommand } from './removeContextCommand';
 import { copyContextPathsCommand } from './copyContextPathsCommand';
+import { copyContextContentsCommand } from './copyContextContentsCommand';
 
 export function registerCommands(extension: vscode.ExtensionContext) {
   let workspaceRoot = vscode.workspace.workspaceFolders ? vscode.workspace.workspaceFolders[0].uri.fsPath : '';
@@ -56,5 +57,10 @@ export function registerCommands(extension: vscode.ExtensionContext) {
     copyContextPathsCommand(section, workspaceRoot);
   });
   extension.subscriptions.push(copyContextPathsDisposable);
+
+  let copyContextContentsDisposable = vscode.commands.registerCommand('context-organizer.copyContextContents', async (section: Section) => {
+    copyContextContentsCommand(section);
+  });
+  extension.subscriptions.push(copyContextContentsDisposable);
 
 }
