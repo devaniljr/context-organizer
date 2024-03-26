@@ -138,5 +138,14 @@ export class File extends Container {
 		};
 		this.contextValue = 'file';
 		this.id = filePath + contextName;
+
+		const configPath = path.join(vscode.workspace.rootPath || '', '.vscode', 'contexts.json');
+		const config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
+		const showFolders = config.configs.showFolders;
+
+		if (!showFolders) {
+			const parts = filePath.split(path.sep);
+			this.description = parts[parts.length - 2];
+		}
 	}
 }
