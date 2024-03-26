@@ -1,3 +1,8 @@
+## [1.0.2] - 2024-03-26
+### Internal
+- Fix README logo image path.
+
+
 ## [1.0.1] - 2024-03-26
 ### Added
 - Show parent folder name in the description of file when showFolders is false.

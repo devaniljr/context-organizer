@@ -1,6 +1,6 @@
 <p align="center">
   <br />
-  <a title="Learn more about Context Organizer" href="https://github.com/devaniljr/context-organizer"><img src="https://private-user-images.githubusercontent.com/7834279/317036880-bf7f299a-bc20-4a7a-befc-791c78415cd0.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTE0ODY0OTMsIm5iZiI6MTcxMTQ4NjE5MywicGF0aCI6Ii83ODM0Mjc5LzMxNzAzNjg4MC1iZjdmMjk5YS1iYzIwLTRhN2EtYmVmYy03OTFjNzg0MTVjZDAucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI0MDMyNiUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNDAzMjZUMjA0OTUzWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9ODZkODc1NTc4NjA4NmQ1MjFiMmUxYzAxYmEwYjk2OWFmN2NlMDkxMjE5MDBlY2RmZWE1OGMzZmEyODk0ZDlkZiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmYWN0b3JfaWQ9MCZrZXlfaWQ9MCZyZXBvX2lkPTAifQ.2SU-ydvAe3A3nlNogUCfOBkGBFz1Yo6rCPwpuSN7qsM" alt="Context Organizer Logo" width="50%" /></a>
+  <a title="Learn more about Context Organizer" href="https://github.com/devaniljr/context-organizer"><img src="https://i.imgur.com/tttuG3d.png" alt="Context Organizer Logo" width="50%" /></a>
 </p>
 
 Tired of getting lost in projects where the files that matter are in folders far apart from each other? Context Organizer lets you organize your files by context, allowing you to navigate through your current work context in an organized way.
